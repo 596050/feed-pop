@@ -1,0 +1,36 @@
+.ant-list-item-meta-description {
+  border: @border-basic;
+  background-color: #dfdfdf;
+  padding: 5px;
+  color: @text-color;
+  text-align: center;
+}
+
+.ant-list-split {
+  .ant-list-item {
+    border: @border-basic;
+    padding: 15px 20px;
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+    &:last-child {
+      border: @border-basic;
+    }
+  }
+}
+
+.ant-avatar.ant-avatar-circle.ant-avatar-image {
+  background-color: red;
+  width: 60px;
+  height: 60px;
+  & > img {
+    border: @border-basic;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+  }
+}
+
+.ant-list-item-meta-avatar {
+  margin-right: 10px;
+  user-select: none;
+}
