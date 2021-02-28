@@ -8,7 +8,7 @@ const PostsBoard = () => {
 
   return (
     <section className="posts-container">
-      <PostsList data={posts} />
+      <PostsList data={posts || []} />
     </section>
   )
 }

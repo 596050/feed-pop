@@ -4,7 +4,7 @@ import useSWR from 'swr'
 import { useInterval } from '../../util'
 
 const fetcher = (input: RequestInfo, init?: RequestInit | undefined) =>
-  fetch(input, init).then((res) => res.json())
+  fetch(input, init).then((res) => res?.json())
 
 // initially get one post
 let url = `${process.env.RAZZLE_API_BASE}/api?count=1`
@@ -16,14 +16,15 @@ export const usePosts = () => {
   const [posts, setPosts] = useState([])
   useSWR(sleeping ? null : url, fetcher, {
     errorRetryInterval: REFRESH_INTERVAL_DEFAULT,
-    onError: (err) => {
-      console.error(`Error ${err}`)
-    },
-    onErrorRetry: (_error, _key, _config, revalidate, { retryCount = 0 }) => {
+    onErrorRetry: (error, _key, _config, revalidate, { retryCount = 0 }) => {
       // Task instruction: "In case of any failure conditions, the tweet updates can pause or stop
       // but should resume as soon as possible and no error messages should be shown to the user"
       // This could be removed in favour of the exponential backoff functionality which swr has
-      setTimeout(() => revalidate({ retryCount: retryCount + 1 }), 0)
+      setTimeout(
+        () => revalidate({ retryCount: retryCount + 1 }),
+        // prevent retries at 0 if offline
+        navigator.onLine ? 0 : 3000
+      )
     },
     onSuccess: (data) => {
       setPosts((prev) => {

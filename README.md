@@ -1,6 +1,6 @@
 ## How to use
 
-- Navigate to the root of the project
+- To run locally, navigate to the root of the project
 
 # Install
 
@@ -25,7 +25,7 @@ Then navigate to http://localhost:3000
 
 ## Purposes of some of the libraries used
 
-> > Razzle - server side rendering // https://razzlejs.org/
+> > Razzle - server side rendering https://razzlejs.org/
 
 - Razzle is really nice because it provides ssr without too much configuration, when using Next and Gatsby there has been quite a bit of
 
@@ -40,4 +40,4 @@ razzle-plugin-serviceworker
 
 > > React virtual https://github.com/tannerlinsley/react-virtual#installation
 
-- Preventing the app from rendering all the items in the DOM is important for performane,
+- Preventing the app from rendering all the items in the DOM is important for performance,

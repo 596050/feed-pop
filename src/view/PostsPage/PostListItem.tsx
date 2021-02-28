@@ -20,11 +20,7 @@ const PostListItem = ({ data }: Props): ReactElement => {
             draggable={false}
           />
         }
-        title={
-          <div>
-            {data.username} {data.id}
-          </div>
-        }
+        title={<div>{data.username}</div>}
         description={data.text}
       />
     </div>

@@ -1,25 +1,23 @@
-import React, { ReactElement, useEffect, useState } from 'react'
+import React, { ReactElement } from 'react'
 import { useVirtual } from 'react-virtual'
 
 import { List } from '../../component'
+import { Post } from '../../model'
 
 import ListItem from './PostListItem'
 
-type Props<T> = {
-  data: T[]
+type Props = {
+  data: Post[]
 }
 
-const PostsList = <T,>({ data = [] }: Props<T>): ReactElement => {
+const PostsList = ({ data = [] }: Props): ReactElement => {
   const parentRef = React.useRef(null)
-  const [state, setState] = useState<{ data: any[] }>({ data })
-
-  useEffect(() => setState({ data }), [data])
 
   const rowVirtualizer = useVirtual({
     overscan: 10,
     paddingStart: 20,
     parentRef,
-    size: state.data.length,
+    size: data?.length,
   })
 
   return (
@@ -31,22 +29,23 @@ const PostsList = <T,>({ data = [] }: Props<T>): ReactElement => {
         }}
       >
         {rowVirtualizer.virtualItems.map((virtualRow) => {
+          const item = data[virtualRow.index]
           return (
             <div
               key={virtualRow.index}
               ref={virtualRow.measureRef}
               style={{
-                height: `${state.data[virtualRow.index]}px`,
+                height: `${item}px`,
                 transform: `translateY(${virtualRow.start}px)`,
               }}
               className="list-item-container"
             >
               <ListItem
                 data={{
-                  id: state.data[virtualRow.index].id,
-                  image: state.data[virtualRow.index].image,
-                  text: state.data[virtualRow.index].text,
-                  username: state.data[virtualRow.index].username,
+                  id: item?.id,
+                  image: item?.image,
+                  text: item?.text,
+                  username: item?.username,
                 }}
               />
             </div>
