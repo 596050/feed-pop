@@ -1,6 +1,6 @@
 ## How to use
 
-- To run locally, navigate to the root of the project
+To run locally, navigate to the root of the project, then:
 
 # Install
 
@@ -27,7 +27,7 @@ Then navigate to http://localhost:3000
 
 > > Razzle - server side rendering https://razzlejs.org/
 
-- Razzle is really nice because it provides ssr without too much configuration, when using Next and Gatsby there has been quite a bit of
+- Razzle is really nice because it provides ssr without too much configuration, when using Next and Gatsby there is quite a bit more
 
 offline-plugin
 razzle-plugin-serviceworker
@@ -36,7 +36,7 @@ razzle-plugin-serviceworker
 
 > > SWR - data fetching https://swr.vercel.app/
 
-- Awesome library which does a lot, it handles polling and errors really well by default
+- Awesome library which does a lot, it handles polling, deduplication and errors really well by default
 
 > > React virtual https://github.com/tannerlinsley/react-virtual#installation
 
